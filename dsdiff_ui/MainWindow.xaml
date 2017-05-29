@@ -1,0 +1,57 @@
+﻿<Window x:Class="dsdiff_cross_ui_wpf.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:dsdiffCrossUiWpf="clr-namespace:dsdiff_cross_ui_wpf"
+        Title="DSDIFF Crossover by dePhonica sound labs." Height="500" Width="650" WindowStyle="None" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Loaded="WindowLoaded1">
+    <Border BorderThickness="0" BorderBrush="White" Background="DarkGray">
+        <Grid Margin="0,17,0,0">
+            <Label Content="DSDIFF Crossover by dePhonica sound labs." Margin="0,-22,0,0" Foreground="LightGray" />
+            <Label HorizontalAlignment="Right" Content="Close" Margin="0,-22,0,0" Foreground="LightGray" MouseEnter="CloseOnMouseEnter" MouseLeave="CloseOnMouseLeave" MouseDown="CloseOnMouseDown" />
+
+            <Grid Background="Silver">
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+
+                <Border ClipToBounds="True" Grid.Row="0">
+                    <Grid Name="Grid1" ZIndex="10" ClipToBounds="True" Margin="10,10,10,5" Background="DimGray" Opacity="0.7" MouseEnter="GridMouseEnter1" MouseLeave="GridMouseLeave1" MouseDown="SelectSourceMouseDown">
+                        <Grid Name="Image1">
+                            <Label Content="Click to select new source file" Foreground="White" />
+                            <Label x:Name="DurationLabel" Content="File duration: 00:00:00" Foreground="White" HorizontalAlignment="Right" />
+                            <dsdiffCrossUiWpf:AniGraph x:Name="SourceGraph" TopFrequency="2822400" />
+                        </Grid>
+                        <Label Name="LabelSelectDsdiff" Content="Select source DSDIFF file" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30" />
+                        <Label Name="LabelLoadError" Content="Previous file was not loaded because of format error" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" Margin="0,50,0,0" Opacity="0" />
+                    </Grid>
+                </Border>
+
+                <Border ClipToBounds="True" Grid.Row="1">
+                    <Grid Name="Grid2" ZIndex="9" ClipToBounds="True" Grid.Row="1" Margin="10,5,10,5" Background="DimGray" Opacity="0.7" MouseEnter="GridMouseEnter1" MouseLeave="GridMouseLeave1" MouseDown="AddProcessingMouseDown">
+                        <Grid Name="Image2">
+                            <dsdiffCrossUiWpf:AniGraph x:Name="FiltersGraph" TopFrequency="24000" GraphRenderType="Edit" />
+                        </Grid>
+                        <Label Name="LabelAddProcessing" Content="Add processing filters" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30" />
+                    </Grid>
+                </Border>
+
+                <Border ClipToBounds="True" Grid.Row="2">
+                    <Grid Name="Grid3" ZIndex="8"  ClipToBounds="True" Grid.Row="2" Margin="10,5,10,10" Background="DimGray" Opacity="0.7" MouseEnter="GridMouseEnter1" MouseLeave="GridMouseLeave1" MouseDown="WriteOutputMouseDown">
+                        <Grid Name="Image3">
+                            <Label Content="Click to start processing" Foreground="White" />
+                            <dsdiffCrossUiWpf:AniGraph x:Name="ResultGraph" TopFrequency="2822400" />
+                        </Grid>
+                        <Label Name="LabelWriteOutput" Content="Write processed output" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30" />
+                        <Grid Name="ImageProcessingInfo">
+                            <Label Name="LabelProcessingPersent" Content="Processing: 0%" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30" />
+                            <Label Name="LabelProcessingAnimation" Content="..." Margin="0,30,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" Foreground="White" />
+                            <Label Content="Click here to terminate processing" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" Margin="204,90,204,28" />
+                        </Grid>
+                        <Label Name="TargetInfoError" Content="Unable to display result file info due to internal error" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" FontSize="14" Margin="0,60,0,0" Opacity="0" />
+                    </Grid>
+                </Border>
+            </Grid>
+        </Grid>
+    </Border>
+</Window>
